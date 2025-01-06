@@ -1,0 +1,53 @@
+public class Main {
+
+	
+  public static int q45(Node<Integer> l1,Node<Integer> p,Node<Integer> q,boolean b) {
+	  if(l1==null) {
+		  return 0;
+	  }
+		if(l1==p) {
+			b=true;
+		}
+		if(l1==q) {
+			return l1.getValue();
+		}
+	
+		if(b==true) {
+			return q45(l1.getNext(),p,q,b)+l1.getValue();
+		}
+	
+	return q45(l1.getNext(),p,q,b);
+}
+  
+  
+  public static int q45(Node<Integer> l1,Node<Integer> p,Node<Integer> q) {
+	  return q45(l1.getNext(),p,q,false);
+  }
+
+  public static void main(String[] args) {
+    Node<Integer> node1 = new Node<>(1);
+    Node<Integer> node2 = new Node<>(3);
+    Node<Integer> node3 = new Node<>(5);
+    Node<Integer> node4 = new Node<>(1);
+    Node<Integer> node5 = new Node<>(1);
+    Node<Integer> node6 = new Node<>(8);
+
+    node1.setNext(node2);
+    node2.setNext(node3);
+    node3.setNext(node4);
+    node4.setNext(node5);
+    node5.setNext(node6);
+    
+    Node<Integer> n1 = new Node<>(1);
+    Node<Integer> n2 = new Node<>(3);
+    Node<Integer> n3 = new Node<>(5);
+  
+
+    n1.setNext(n2);
+    n2.setNext(n3);
+
+    
+    System.out.println(q45(node1,node3,node5));
+
+  }
+}
